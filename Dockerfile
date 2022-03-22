@@ -46,7 +46,7 @@ RUN apt-get update && \
 
 RUN apt-get update && apt-get install -y jq
 ### Install maven
-RUN apk add --no-cache curl tar bash procps
+RUN apt-get add --no-cache curl tar bash procps
 
 # Downloading and installing Maven
 # 1- Define a constant with the version of maven you want to install
