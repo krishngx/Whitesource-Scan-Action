@@ -60,10 +60,10 @@ unset GOROOT
 set +e
 # Execute Unified Agent (2 settings)
 if [ -z  "$INPUT_CONFIGFILE" ]; then
-  java -jar wss-unified-agent.jar -noConfig true -apiKey $INPUT_APIKEY -userKey $INPUT_USERKEY -project "$PROJECT_NAME_STR" $PRODUCT_NAME_STR\
+  java -jar wss-unified-agent.jar -noConfig true -apiKey $INPUT_APIKEY -userKey $INPUT_USERKEY -project "$PROJECT_NAME_STR" -productName $PRODUCT_NAME_STR\
     -d . -wss.url $INPUT_WSSURL -resolveAllDependencies true
 else
-  java -jar wss-unified-agent.jar -apiKey $INPUT_APIKEY -c "$INPUT_CONFIGFILE" -d .
+  java -jar wss-unified-agent.jar -apiKey $INPUT_APIKEY -userKey $INPUT_USERKEY -project "$PROJECT_NAME_STR" -productName $PRODUCT_NAME_STR -c "$INPUT_CONFIGFILE" -d .
 fi
 
 WS_EXIT_CODE=$?
