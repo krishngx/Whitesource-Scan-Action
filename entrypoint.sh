@@ -11,7 +11,10 @@ if [ -z "$INPUT_APIKEY" ]; then
   echo "You must set an API key!"
   exit 126
 fi
-
+if [ -z "$INPUT_USERKEY" ]; then
+  echo "You must set an USER key!"
+  exit 126
+fi
 PROJECT_NAME_STR=""
 if [ -z "$INPUT_PROJECTNAME" ]; then
   IFS='/' read -a GH_REPO <<< "$GITHUB_REPOSITORY"
@@ -57,7 +60,7 @@ unset GOROOT
 set +e
 # Execute Unified Agent (2 settings)
 if [ -z  "$INPUT_CONFIGFILE" ]; then
-  java -jar wss-unified-agent.jar -noConfig true -apiKey $INPUT_APIKEY -project "$PROJECT_NAME_STR" $PRODUCT_NAME_STR\
+  java -jar wss-unified-agent.jar -noConfig true -apiKey $INPUT_APIKEY -userKey $INPUT_USERKEY -project "$PROJECT_NAME_STR" $PRODUCT_NAME_STR\
     -d . -wss.url $INPUT_WSSURL -resolveAllDependencies true
 else
   java -jar wss-unified-agent.jar -apiKey $INPUT_APIKEY -c "$INPUT_CONFIGFILE" -d .
