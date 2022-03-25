@@ -8,6 +8,9 @@ inputs:
   apiKey:
     description: 'API key from Whitesource.'
     required: true
+  userKey:
+    description: 'User key from Whitesource.'
+    required: true    
   productName:
     description: 'Name of the Product that this project falls under.'
     required: false
